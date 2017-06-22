@@ -1,10 +1,10 @@
-# ! /usr/bin/env python
+#!/usr/bin/env python
 from socket import *
 from time import ctime
 HOST =''
 #HOST = "localhost"
 #HOST = "127.0.0.1"
-PORT = 8005
+PORT = 8010
 BUFSIZ = 1024
 ADDR =(HOST, PORT)
 
@@ -23,6 +23,6 @@ while True :
         #tcpCliSock.send('[%s]%s' % (bytes(ctime(),'utf-8'), data))
         print(ctime())
         print(bytes(ctime(), 'utf-8'))
-        tcpCliSock.send(ctime().encode("utf-8")) #, data)
-    tcpCliSock.close ( )
+        tcpCliSock.send(ctime().encode("utf-8") + data)
+    tcpCliSock.close()
 tcpSerSock.close ( )
